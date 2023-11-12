@@ -1,6 +1,6 @@
 "use client";
 import Lottie from "lottie-react";
-import LoadingCarAnimation from "../app/assets/LoadingCarAnimation.json";
+import LoadingCarAnimation from "../assets/LoadingCarAnimation.json";
 
 const LoadingAnimation = () => {
   const containerStyle = {

@@ -1,10 +1,8 @@
 "use client";
-
-import React from "react";
 import Lottie from "lottie-react";
-import notFoundAnimation from "../assets/Not Found Animation.json";
+import loginAnimation from "../assets/LoginAnimation.json";
 
-const NotFoundAnimationComponent = () => {
+const LoginAnimation = () => {
   const containerStyle = {
     display: "flex",
     justifyContent: "center",
@@ -17,14 +15,15 @@ const NotFoundAnimationComponent = () => {
     width: "100%",
   };
   return (
-    <div style={containerStyle}>
+   <div style={containerStyle}>
       <Lottie
-        animationData={notFoundAnimation}
+        animationData={loginAnimation}
         loop={true}
         style={animationContainerStyle}
       />
     </div>
-  );
+  )
+ 
 };
 
-export default NotFoundAnimationComponent;
+export default LoginAnimation;

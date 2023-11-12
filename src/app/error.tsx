@@ -1,6 +1,6 @@
 "use client";
 import Lottie from "lottie-react";
-import somethingWentWrongAnimation from "../app/assets/SomethingWentWrongAnimation.json";
+import somethingWentWrongAnimation from "../assets/SomethingWentWrongAnimation.json";
 
 const ErrorPage = () => {
   const containerStyle = {
