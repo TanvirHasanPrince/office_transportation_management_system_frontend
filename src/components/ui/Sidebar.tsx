@@ -9,6 +9,8 @@ import {
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
+import { sidebarItems } from "@/constants/sidebarItems";
+import { USER_ROLE } from "@/constants/role";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -45,6 +47,8 @@ const items: MenuItem[] = [
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
+
+  const role = USER_ROLE.DRIVER;
   return (
     <div>
       <Sider
@@ -77,7 +81,7 @@ const Sidebar = () => {
           theme="dark"
           defaultSelectedKeys={["1"]}
           mode="inline"
-          items={items}
+          items={sidebarItems(role)}
         />
       </Sider>
     </div>
