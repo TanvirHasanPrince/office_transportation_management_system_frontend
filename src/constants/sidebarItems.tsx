@@ -7,6 +7,7 @@ import {
   TeamOutlined,
   UserOutlined,
   ScheduleOutlined,
+  SketchOutlined,
   ProfileOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
@@ -58,7 +59,18 @@ export const sidebarItems = (role: string) => {
       children: [
         {
           label: <Link href={`/${role}`}>Schedule</Link>,
-          key: `/${role}/driver`,
+          key: `/${role}/schedule`,
+        },
+      ],
+    },
+    {
+      label: "Location",
+      key: "location",
+      icon: <SketchOutlined />,
+      children: [
+        {
+          label: <Link href={`/${role}`}>Location</Link>,
+          key: `/${role}/location`,
         },
       ],
     },
@@ -99,8 +111,6 @@ export const sidebarItems = (role: string) => {
 
 
   if (role === USER_ROLE.ADMIN) return adminSidebarItems;
-
-
   else if (role === USER_ROLE.EMPLOYEE) return employeeSidebarItems;
   else if (role === USER_ROLE.DRIVER) return driverSidebarItems;
   else {
