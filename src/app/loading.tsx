@@ -4,7 +4,7 @@ import React from "react";
 const LoadingPage = () => {
   return (
     <div>
-      <LoadingAnimation></LoadingAnimation>
+<LoadingAnimation></LoadingAnimation>
     </div>
   );
 };

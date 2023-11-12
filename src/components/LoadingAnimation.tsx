@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Lottie from "lottie-react";
 import LoadingCarAnimation from "../app/assets/LoadingCarAnimation.json";
 
@@ -14,15 +14,15 @@ const LoadingAnimation = () => {
     maxWidth: "400px",
     width: "100%",
   };
- return (
-   <div style={containerStyle}>
-     <Lottie
-       animationData={LoadingCarAnimation}
-       loop={true}
-       style={animationContainerStyle}
-     />
-   </div>
- );
+  return (
+    <div style={containerStyle}>
+      <Lottie
+        animationData={LoadingCarAnimation}
+        loop={true}
+        style={animationContainerStyle}
+      />
+    </div>
+  );
 };
 
 export default LoadingAnimation;

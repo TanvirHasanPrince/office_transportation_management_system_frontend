@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/cssinjs": "^1.17.2",
     "@reduxjs/toolkit": "^1.9.7",
     "antd": "^5.11.1",
     "lottie-react": "^2.4.0",
