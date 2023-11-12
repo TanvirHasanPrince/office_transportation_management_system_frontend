@@ -48,12 +48,31 @@ const Sidebar = () => {
   return (
     <div>
       <Sider
-        style={{ minHeight: "100vh" }}
+        style={{
+          minHeight: "100vh",
+          overflow: "auto",
+          position: "sticky",
+          left: 0,
+          top: 0,
+          bottom: 0,
+        }}
+        theme="dark"
         collapsible
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
+        width={collapsed ? 80 : 280}
       >
-        <div className="demo-logo-vertical" />
+        <div
+          style={{
+            color: "#ADD8E6",
+            fontSize: "2rem",
+            textAlign: "center",
+            fontWeight: "bold",
+            marginBottom: "1rem",
+          }}
+        >
+          {collapsed ? "" : "Transportation Management System"}
+        </div>
         <Menu
           theme="dark"
           defaultSelectedKeys={["1"]}
