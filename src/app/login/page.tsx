@@ -4,6 +4,7 @@ import LoginAnimation from "@/components/LoginAnimation";
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormInput";
 import { SubmitHandler } from "react-hook-form";
+import { useUserLoginMutation } from "@/redux/api/authApi";
 
 type FormValues = {
   id: string;
@@ -11,8 +12,11 @@ type FormValues = {
 };
 
 const LoginPage = () => {
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const [userLogin] = useUserLoginMutation()
+  const onSubmit: SubmitHandler<FormValues> = async (data: any) => {
     try {
+      const res = await userLogin({...data})
+      console.log(res);
       console.log(data);
     } catch (err) {}
   };
@@ -23,7 +27,6 @@ const LoginPage = () => {
       align="middle"
       style={{
         minHeight: "100vh",
-
       }}
     >
       <Col sm={12} md={16} lg={10}>
@@ -35,7 +38,7 @@ const LoginPage = () => {
           <Form submitHandler={onSubmit}>
             <div>
               <FormInput
-                name="id"
+                name="phoneNumber"
                 type="text"
                 size="large"
                 label="Phone number"
