@@ -1,12 +1,11 @@
-"use client";
-
-import { Breadcrumb, Layout, Menu, theme } from "antd";
+import { Layout } from "antd";
 import TMSBreastCrumb from "./TMSBreastCrumb";
+import Header from "./Header";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content } = Layout;
 
 const Contents = ({ children }: { children: React.ReactNode }) => {
-  const base = 'admin'
+  const base = "admin";
   return (
     <Content
       style={{
@@ -14,6 +13,7 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
         color: "black",
       }}
     >
+      <Header />
       <TMSBreastCrumb
         items={[
           {

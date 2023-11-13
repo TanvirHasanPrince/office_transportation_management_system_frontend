@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import type { MenuProps } from "antd";
-import { Breadcrumb, Layout, Menu } from "antd";
+import {  Layout, Menu } from "antd";
 import { sidebarItems } from "@/constants/sidebarItems";
 import { USER_ROLE } from "@/constants/role";
 
