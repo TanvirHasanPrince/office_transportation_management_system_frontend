@@ -1,22 +1,22 @@
-'use client'
+"use client";
 import Contents from "@/components/ui/Contents";
 import Sidebar from "@/components/ui/Sidebar";
 import { isLoggedIn } from "@/services/auth.service";
 import { Layout } from "antd";
-import { Button, ConfigProvider, Space } from "antd";
+import { ConfigProvider } from "antd";
 import { useRouter } from "next/navigation";
 
 import { useEffect } from "react";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-  const userLoggedIn = isLoggedIn()
-  const router = useRouter()
+  const userLoggedIn = isLoggedIn();
+  const router = useRouter();
 
-  useEffect(()=>{
-    if(!userLoggedIn) {
-      router.push('/login')
+  useEffect(() => {
+    if (!userLoggedIn) {
+      router.push("/login");
     }
-  }, [])
+  }, [router, userLoggedIn]);
 
   return (
     <ConfigProvider

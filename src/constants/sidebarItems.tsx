@@ -1,11 +1,7 @@
 import type { MenuProps } from "antd";
 
 import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
   TeamOutlined,
-  UserOutlined,
   ScheduleOutlined,
   SketchOutlined,
   ProfileOutlined,

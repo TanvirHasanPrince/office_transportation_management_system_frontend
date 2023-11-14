@@ -1,3 +1,4 @@
+'use client'
 import { Layout } from "antd";
 import TMSBreastCrumb from "./TMSBreastCrumb";
 import Header from "./Header";
