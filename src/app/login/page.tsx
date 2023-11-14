@@ -22,10 +22,10 @@ const LoginPage = () => {
   const onSubmit: SubmitHandler<FormValues> = async (data: any) => {
     try {
       const res = await userLogin({...data}).unwrap();
-     
-      if (res?.data?.token) {
+    //  console.log(res);
+      if (res?.token) {
         router.push('/profile')
-      } storeUserInfo({ token: res?.data?.token });
+      } storeUserInfo({ token: res?.token });
 
     } catch (err:any) {
       console.error(err.message);
