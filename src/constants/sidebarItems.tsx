@@ -32,8 +32,12 @@ export const sidebarItems = (role: string) => {
       icon: <TeamOutlined />,
       children: [
         {
-          label: <Link href={`/${role}`}>Employee</Link>,
-          key: `/${role}/employee`,
+          label: <Link href={`/${role}/employees`}>Employees</Link>,
+          key: `/${role}/employees`,
+        },
+        {
+          label: <Link href={`/${role}/createEmployees`}>Create Employee</Link>,
+          key: `/${role}/createEmployees`,
         },
       ],
     },
@@ -43,8 +47,12 @@ export const sidebarItems = (role: string) => {
       icon: <TeamOutlined />,
       children: [
         {
-          label: <Link href={`/${role}`}>Driver</Link>,
-          key: `/${role}/driver`,
+          label: <Link href={`/${role}/drivers`}>Drivers</Link>,
+          key: `/${role}/drivers`,
+        },
+        {
+          label: <Link href={`/${role}/createDriver`}>Create Driver</Link>,
+          key: `/${role}/createDriver`,
         },
       ],
     },
@@ -54,8 +62,12 @@ export const sidebarItems = (role: string) => {
       icon: <ScheduleOutlined />,
       children: [
         {
-          label: <Link href={`/${role}`}>Schedule</Link>,
-          key: `/${role}/schedule`,
+          label: <Link href={`/${role}/schedules`}>Schedules</Link>,
+          key: `/${role}/schedules`,
+        },
+        {
+          label: <Link href={`/${role}/createSchedule`}>Create scheule</Link>,
+          key: `/${role}/createSchedules`,
         },
       ],
     },
@@ -65,8 +77,14 @@ export const sidebarItems = (role: string) => {
       icon: <SketchOutlined />,
       children: [
         {
-          label: <Link href={`/${role}`}>Location</Link>,
-          key: `/${role}/location`,
+          label: <Link href={`/${role}/locations`}>Locations</Link>,
+          key: `/${role}/locations`,
+        },
+        {
+          label: (
+            <Link href={`/${role}/createLocations`}>Create Locations</Link>
+          ),
+          key: `/${role}/createLocations`,
         },
       ],
     },

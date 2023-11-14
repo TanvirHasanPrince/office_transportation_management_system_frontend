@@ -2,11 +2,14 @@
 import { Layout } from "antd";
 import TMSBreastCrumb from "./TMSBreastCrumb";
 import Header from "./Header";
+import { getUserInfo } from "@/services/auth.service";
 
 const { Content } = Layout;
 
 const Contents = ({ children }: { children: React.ReactNode }) => {
-  const base = "admin";
+
+   const { role } = getUserInfo() as any;
+  const base = role;
   return (
     <Content
       style={{
@@ -20,11 +23,6 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
           {
             label: `${base}`,
             link: `/${base}`,
-          },
-
-          {
-            label: `student`,
-            link: `/${base}/student`,
           },
         ]}
       />
