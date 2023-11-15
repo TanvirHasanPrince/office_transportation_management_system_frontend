@@ -1,6 +1,5 @@
 'use client'
 import { Layout } from "antd";
-import TMSBreastCrumb from "./TMSBreastCrumb";
 import Header from "./Header";
 import { getUserInfo } from "@/services/auth.service";
 
@@ -14,18 +13,11 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
     <Content
       style={{
         minHeight: "100vh",
-        color: "black",
+        color: "black", 
       }}
     >
       <Header />
-      <TMSBreastCrumb
-        items={[
-          {
-            label: `${base}`,
-            link: `/${base}`,
-          },
-        ]}
-      />
+ 
 
       {children}
     </Content>
