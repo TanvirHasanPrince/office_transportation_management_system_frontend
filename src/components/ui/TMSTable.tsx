@@ -5,7 +5,7 @@ type TMSTableProps = {
   columns: any;
   dataSource: any;
   pageSize?: number;
-  totalPage?: number;
+  totalPages?: number;
   showSizeChanger?: boolean;
   onPaginationChange?: (page: number, pageSize: number) => void;
   onTableChange?: (pagination: any, filter: any, sorter: any) => void;
@@ -16,7 +16,7 @@ const TMSTable = ({
   columns,
   dataSource,
   pageSize,
-  totalPage,
+  totalPages,
   showSizeChanger,
   onPaginationChange,
   onTableChange,
@@ -24,10 +24,10 @@ const TMSTable = ({
 }: TMSTableProps) => {
   const paginationConfig = showPagination
     ? {
-        pageSize: 5,
-        total: 10,
+        pageSize: pageSize,
+        total: totalPages,
         pageSizeOptions: [5, 10, 20],
-        showSizeChanger: true,
+        showSizeChanger: showSizeChanger,
         onChange: onPaginationChange,
       }
     : false;

@@ -1,9 +1,7 @@
-'use client'
+"use client";
 import TMSTable from "@/components/ui/TMSTable";
 import { Button } from "antd";
 import React from "react";
-
-
 
 const LocationsPage = () => {
   const columns = [
@@ -40,7 +38,7 @@ const LocationsPage = () => {
     },
     {
       key: "2",
-      name: "Jim Green",
+      name: "Prince Green",
       age: 42,
       address: "London No. 1 Lake Park",
       tags: ["loser"],
@@ -64,16 +62,15 @@ const LocationsPage = () => {
       <TMSTable
         columns={columns}
         dataSource={tableData}
-        pageSize={5}
-        totalPage={10}
+        pageSize={15}
+        totalPages={3}
         showSizeChanger={true}
         onPaginationChange={onPaginationChange}
         onTableChange={onTableChange}
-        showPagination= {true}
+        showPagination={true}
       ></TMSTable>
     </div>
   );
 };
 
 export default LocationsPage;
-
