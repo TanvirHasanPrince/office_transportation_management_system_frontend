@@ -27,7 +27,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           borderRadius: 2,
 
           // Alias Token
-          colorBgContainer: "#ADD8E6",
+          colorBgContainer: "#ced6e8",
         },
       }}
     >
