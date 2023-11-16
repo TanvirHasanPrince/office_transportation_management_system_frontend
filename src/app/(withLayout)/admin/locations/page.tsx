@@ -4,27 +4,27 @@ import TMSTable from "@/components/ui/TMSTable";
 import { useLocationsQuery } from "@/redux/api/locationApi";
 import { Button } from "antd";
 import React, { useState } from "react";
+import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 
 const LocationsPage = () => {
- const query:Record<string, any> = {
- }
+  const query: Record<string, any> = {};
 
- const [size, setSize] = useState<number>(10)
- const [page, setPage] = useState<number>(1);
- const [sortBy, setSortBy] = useState<string>("");
- const [sortOrder, setSortOrder] = useState<string>('')
- query['limit'] = size;
- query['page'] = page;
- query["sortBy"] = sortBy;
- query["sortOrder"] = sortOrder;
+  const [size, setSize] = useState<number>(10);
+  const [page, setPage] = useState<number>(1);
+  const [sortBy, setSortBy] = useState<string>("");
+  const [sortOrder, setSortOrder] = useState<string>("");
+  query["limit"] = size;
+  query["page"] = page;
+  query["sortBy"] = sortBy;
+  query["sortOrder"] = sortOrder;
 
- const {data, isLoading} = useLocationsQuery({...query});
- const locations = data?.locations;
- const meta = data?.meta
+  const { data, isLoading } = useLocationsQuery({ ...query });
+  const locations = data?.locations;
+  const meta = data?.meta;
 
-if (isLoading) {
-  <LoadingAnimation></LoadingAnimation>
-}
+  if (isLoading) {
+    <LoadingAnimation></LoadingAnimation>;
+  }
 
   const columns = [
     {
@@ -40,42 +40,43 @@ if (isLoading) {
       title: "Action",
       render: function (data: any) {
         return (
-          <Button onClick={() => console.log(data)} type="primary" danger>
-            X
-          </Button>
+          <div>
+            <Button
+              onClick={() => console.log(data)}
+              type="primary"
+              style={{ background: " #6D2D6C ", color: "white" }}
+            >
+              <EyeOutlined />
+            </Button>
+
+            <Button
+              style={{ margin: "5px" }}
+              onClick={() => console.log(data)}
+              type="primary"
+            >
+              <EditOutlined />
+            </Button>
+            <Button onClick={() => console.log(data)} type="primary" danger>
+              <DeleteOutlined />
+            </Button>
+          </div>
         );
       },
     },
   ];
 
-  // const tableData = [
-  //   {
-  //     key: "1",
-  //     name: "John Brown",
-  //     age: 32,
-  //     address: "New York No. 1 Lake Park",
-  //     tags: ["nice", "developer"],
-  //   },
-  //   {
-  //     key: "2",
-  //     name: "Prince Green",
-  //     age: 42,
-  //     address: "London No. 1 Lake Park",
-  //     tags: ["loser"],
-  //   },
-  // ];
-   const onPaginationChange = (page: number, pageSize: number) => {
-     console.log("Page:", page, "PageSize:", pageSize);
-     setPage(page);
-     setSize(pageSize);
-   };
-   const onTableChange = (pagination: any, filter: any, sorter: any) => {
-     const { order, field } = sorter;
-     // console.log(order, field);
-     setSortBy(field as string);
-     setSortOrder(order === "ascend" ? "asc" : "desc");
-   };
-   
+  const onPaginationChange = (page: number, pageSize: number) => {
+    console.log("Page:", page, "PageSize:", pageSize);
+    setPage(page);
+    setSize(pageSize);
+  };
+  const onTableChange = (pagination: any, filter: any, sorter: any) => {
+    const { order, field } = sorter;
+    // console.log(order, field);
+    setSortBy(field as string);
+    setSortOrder(order === "ascend" ? "asc" : "desc");
+  };
+
   return (
     <div
       style={{
