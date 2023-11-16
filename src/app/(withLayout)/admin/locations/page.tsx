@@ -2,7 +2,7 @@
 import LoadingAnimation from "@/components/LoadingAnimation";
 import TMSTable from "@/components/ui/TMSTable";
 import { useLocationsQuery } from "@/redux/api/locationApi";
-import { Button } from "antd";
+import { Button, Input } from "antd";
 import React, { useState } from "react";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 
@@ -13,10 +13,12 @@ const LocationsPage = () => {
   const [page, setPage] = useState<number>(1);
   const [sortBy, setSortBy] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   query["limit"] = size;
   query["page"] = page;
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
+  query["searchTerm"] = searchTerm;
 
   const { data, isLoading } = useLocationsQuery({ ...query });
   const locations = data?.locations;
@@ -83,7 +85,14 @@ const LocationsPage = () => {
         padding: "20px 20px",
       }}
     >
-      <h1 style={{ marginBottom: "10px" }}>List of all athe locations</h1>
+      <h1 style={{ marginBottom: "10px" }}>List of all locations</h1>
+      <Input
+        style={{ width: "20%", margin: "10px 0px", background: "white" }}
+        type="text"
+        size="large"
+        placeholder="Search locations..."
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
       <TMSTable
         columns={columns}
         dataSource={locations}
