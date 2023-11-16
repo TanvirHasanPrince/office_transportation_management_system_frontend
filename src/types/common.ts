@@ -20,3 +20,11 @@ export type IGenericErrorMessage = {
   path: string | number;
   message: string;
 };
+
+export interface ILocation {
+  id: string;
+  locationName: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number
+}

@@ -1,3 +1,4 @@
+import { ILocation, IMeta } from "@/types";
 import { tagTypes } from "../tag-types";
 import { baseApi } from "./baseApi";
 
@@ -13,7 +14,21 @@ export const locationApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.location],
     }),
+    locations: build.query({
+      query: (arg: Record<string, any>) => ({
+        url: `${LOCATION_URL}`,
+        method: "GET",
+        params: arg,
+      }),
+      transformResponse: (response: ILocation, meta: IMeta) => {
+        return {
+          locations: response,
+          meta: meta,
+        };
+      },
+      providesTags: [tagTypes.location],
+    }),
   }),
 });
 
-export const { useAddLocationMutation } = locationApi;
+export const { useLocationsQuery, useAddLocationMutation } = locationApi;
