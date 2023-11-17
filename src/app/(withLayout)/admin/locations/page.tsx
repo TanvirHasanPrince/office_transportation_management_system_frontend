@@ -4,7 +4,13 @@ import TMSTable from "@/components/ui/TMSTable";
 import { useLocationsQuery } from "@/redux/api/locationApi";
 import { Button, Input } from "antd";
 import React, { useState } from "react";
-import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
+import { useDebounced } from "@/redux/hooks";
+import {
+  DeleteOutlined,
+  EditOutlined,
+  EyeOutlined,
+  ReloadOutlined,
+} from "@ant-design/icons";
 
 const LocationsPage = () => {
   const query: Record<string, any> = {};
@@ -18,7 +24,16 @@ const LocationsPage = () => {
   query["page"] = page;
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
-  query["searchTerm"] = searchTerm;
+  // query["searchTerm"] = searchTerm;
+
+    const debouncedTerm = useDebounced({
+      searchQuery: searchTerm,
+      delay: 600,
+    });
+
+    if (!!debouncedTerm) {
+      query["searchTerm"] = debouncedTerm;
+    }
 
   const { data, isLoading } = useLocationsQuery({ ...query });
   const locations = data?.locations;
@@ -79,6 +94,12 @@ const LocationsPage = () => {
     setSortOrder(order === "ascend" ? "asc" : "desc");
   };
 
+  const resetFilters = ()=> {
+    setSortBy('')
+    setSortOrder('')
+    setSearchTerm('') 
+  }
+
   return (
     <div
       style={{
@@ -93,6 +114,15 @@ const LocationsPage = () => {
         placeholder="Search locations..."
         onChange={(e) => setSearchTerm(e.target.value)}
       />
+      {(!!sortBy || !!sortOrder || !!searchTerm) && (
+        <Button
+          style={{ marginLeft: "5px" }}
+          type="primary"
+          onClick={resetFilters}
+        >
+          <ReloadOutlined />
+        </Button>
+      )}
       <TMSTable
         columns={columns}
         dataSource={locations}
