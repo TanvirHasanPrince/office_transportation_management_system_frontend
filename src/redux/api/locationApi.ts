@@ -28,7 +28,24 @@ export const locationApi = baseApi.injectEndpoints({
       },
       providesTags: [tagTypes.location],
     }),
+
+    location: build.query({
+      query: (id) => ({
+        url: `${LOCATION_URL}/${id}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.location],
+    }),
+
+    updateLocation: build.mutation({
+      query: (data) => ({
+        url: `${LOCATION_URL}/${data.id}`,
+        method: "PATCH",
+        data: data.body,
+      }),
+      invalidatesTags: [tagTypes.location],
+    }),
   }),
 });
 
-export const { useLocationsQuery, useAddLocationMutation } = locationApi;
+export const { useLocationsQuery, useAddLocationMutation, useLocationQuery, useUpdateLocationMutation } = locationApi;

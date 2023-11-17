@@ -5,13 +5,14 @@ import { useLocationsQuery } from "@/redux/api/locationApi";
 import { Button, Input } from "antd";
 import React, { useState } from "react";
 import { useDebounced } from "@/redux/hooks";
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 import {
   DeleteOutlined,
   EditOutlined,
   EyeOutlined,
   ReloadOutlined,
 } from "@ant-design/icons";
+import Link from "next/link";
 
 const LocationsPage = () => {
   const query: Record<string, any> = {};
@@ -27,14 +28,14 @@ const LocationsPage = () => {
   query["sortOrder"] = sortOrder;
   // query["searchTerm"] = searchTerm;
 
-    const debouncedTerm = useDebounced({
-      searchQuery: searchTerm,
-      delay: 600,
-    });
+  const debouncedTerm = useDebounced({
+    searchQuery: searchTerm,
+    delay: 600,
+  });
 
-    if (!!debouncedTerm) {
-      query["searchTerm"] = debouncedTerm;
-    }
+  if (!!debouncedTerm) {
+    query["searchTerm"] = debouncedTerm;
+  }
 
   const { data, isLoading } = useLocationsQuery({ ...query });
   const locations = data?.locations;
@@ -54,8 +55,8 @@ const LocationsPage = () => {
       dataIndex: "createdAt",
       sorter: true,
       render: function (data: any) {
-        return data && dayjs(data).format("DD MMM YYYY hh:mm:ss A");
-      }
+        return data && dayjs(data).format(" MMMM DD, YYYY hh:mm:ss A ");
+      },
     },
     {
       title: "Action",
@@ -70,13 +71,15 @@ const LocationsPage = () => {
               <EyeOutlined />
             </Button> */}
 
-            <Button
-              style={{ margin: "5px" }}
-              onClick={() => console.log(data)}
-              type="primary"
-            >
-              <EditOutlined />
-            </Button>
+            <Link href={`/admin/locations/edit/${data?._id}`}>
+              <Button
+                style={{ margin: "5px" }}
+                onClick={() => console.log(data)}
+                type="primary"
+              >
+                <EditOutlined />
+              </Button>
+            </Link>
             <Button onClick={() => console.log(data)} type="primary" danger>
               <DeleteOutlined />
             </Button>
@@ -98,11 +101,11 @@ const LocationsPage = () => {
     setSortOrder(order === "ascend" ? "asc" : "desc");
   };
 
-  const resetFilters = ()=> {
-    setSortBy('')
-    setSortOrder('')
-    setSearchTerm('') 
-  }
+  const resetFilters = () => {
+    setSortBy("");
+    setSortOrder("");
+    setSearchTerm("");
+  };
 
   return (
     <div
