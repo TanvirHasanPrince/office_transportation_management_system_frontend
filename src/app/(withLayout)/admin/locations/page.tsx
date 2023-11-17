@@ -5,6 +5,7 @@ import { useLocationsQuery } from "@/redux/api/locationApi";
 import { Button, Input } from "antd";
 import React, { useState } from "react";
 import { useDebounced } from "@/redux/hooks";
+import dayjs from 'dayjs';
 import {
   DeleteOutlined,
   EditOutlined,
@@ -52,19 +53,22 @@ const LocationsPage = () => {
       title: "Created At",
       dataIndex: "createdAt",
       sorter: true,
+      render: function (data: any) {
+        return data && dayjs(data).format("DD MMM YYYY hh:mm:ss A");
+      }
     },
     {
       title: "Action",
       render: function (data: any) {
         return (
           <div>
-            <Button
+            {/* <Button
               onClick={() => console.log(data)}
               type="primary"
               style={{ background: " #6D2D6C ", color: "white" }}
             >
               <EyeOutlined />
-            </Button>
+            </Button> */}
 
             <Button
               style={{ margin: "5px" }}
