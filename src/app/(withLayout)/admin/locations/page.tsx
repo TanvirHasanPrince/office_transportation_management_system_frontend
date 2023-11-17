@@ -1,8 +1,8 @@
 "use client";
 import LoadingAnimation from "@/components/LoadingAnimation";
 import TMSTable from "@/components/ui/TMSTable";
-import { useLocationsQuery } from "@/redux/api/locationApi";
-import { Button, Input } from "antd";
+import { useDeleteLocationMutation, useLocationsQuery } from "@/redux/api/locationApi";
+import { Button, Input, message } from "antd";
 import React, { useState } from "react";
 import { useDebounced } from "@/redux/hooks";
 import dayjs from "dayjs";
@@ -38,12 +38,22 @@ const LocationsPage = () => {
   }
 
   const { data, isLoading } = useLocationsQuery({ ...query });
+  const [deleteLocation] = useDeleteLocationMutation();
   const locations = data?.locations;
   const meta = data?.meta;
 
   if (isLoading) {
     <LoadingAnimation></LoadingAnimation>;
   }
+
+    const deleteHandler = async (id: string) => {
+      try {
+        await deleteLocation(id);
+        message.success("Location deleted Successfully");
+      } catch (err: any) {
+        message.error(err.message);
+      }
+    };
 
   const columns = [
     {
@@ -80,7 +90,7 @@ const LocationsPage = () => {
                 <EditOutlined />
               </Button>
             </Link>
-            <Button onClick={() => console.log(data)} type="primary" danger>
+            <Button onClick={() => deleteHandler(data?._id)} type="primary" danger>
               <DeleteOutlined />
             </Button>
           </div>

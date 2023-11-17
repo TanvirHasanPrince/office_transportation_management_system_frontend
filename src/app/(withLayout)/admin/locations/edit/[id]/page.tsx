@@ -1,7 +1,10 @@
 "use client";
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormInput";
-import { useLocationQuery } from "@/redux/api/locationApi";
+import {
+  useLocationQuery,
+  useUpdateLocationMutation,
+} from "@/redux/api/locationApi";
 import { Button, Col, Row, message } from "antd";
 import React from "react";
 
@@ -13,20 +16,19 @@ const EditLocationPage = ({ params }: IDProps) => {
   const { id } = params;
 
   const { data, isLoading } = useLocationQuery(id);
-  console.log(data);
-
+  const [updateLocation] = useUpdateLocationMutation();
   
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (values: { locationName: string }) => {
     try {
-      await data;
+      await updateLocation({ id, body: values });
       message.success("Location updated Successfully");
     } catch (err: any) {
       message.error(err.message);
     }
   };
 
-//@ts-ignore
+  //@ts-ignore
   const defaultValues = {
     locationName: data?.locationName || "",
   };
@@ -42,7 +44,7 @@ const EditLocationPage = ({ params }: IDProps) => {
       <Form submitHandler={onSubmit} defaultValues={defaultValues}>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
           <Col span={8} style={{ margin: "10px 0" }}>
-            <FormInput name="locationName"  />
+            <FormInput name="locationName" />
           </Col>
         </Row>
         <Button type="primary" htmlType="submit">
