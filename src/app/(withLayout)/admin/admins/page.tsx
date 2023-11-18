@@ -16,7 +16,7 @@ import {
   ReloadOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
-import { useAdminsQuery } from "@/redux/api/adminApi";
+import { useAdminsQuery, useDeleteAdminMutation } from "@/redux/api/adminApi";
 
 const AdminsPage = () => {
   const query: Record<string, any> = {};
@@ -42,7 +42,7 @@ const AdminsPage = () => {
   }
 
   const { data, isLoading } = useAdminsQuery({ ...query });
-  // const [deleteLocation] = useDeleteLocationMutation();
+  const [deleteAdmin] = useDeleteAdminMutation();
   const admins = data?.admins;
   const meta = data?.meta;
 
@@ -50,14 +50,14 @@ const AdminsPage = () => {
     <LoadingAnimation></LoadingAnimation>;
   }
 
-  // const deleteHandler = async (id: string) => {
-  //   try {
-  //     await deleteLocation(id);
-  //     message.success("Location deleted Successfully");
-  //   } catch (err: any) {
-  //     message.error(err.message);
-  //   }
-  // };
+  const deleteHandler = async (id: string) => {
+    try {
+      await deleteAdmin(id);
+      message.success("Admin deleted Successfully");
+    } catch (err: any) {
+      message.error(err.message);
+    }
+  };
 
   const columns = [
     {
@@ -93,13 +93,13 @@ const AdminsPage = () => {
       render: function (data: any) {
         return (
           <div>
-            {/* <Button
+            <Button
               onClick={() => console.log(data)}
               type="primary"
               style={{ background: " #6D2D6C ", color: "white" }}
             >
               <EyeOutlined />
-            </Button> */}
+            </Button>
 
             <Link href={`/admin/locations/edit/${data?._id}`}>
               <Button
@@ -110,13 +110,13 @@ const AdminsPage = () => {
                 <EditOutlined />
               </Button>
             </Link>
-            {/* <Button
+            <Button
               onClick={() => deleteHandler(data?._id)}
               type="primary"
               danger
             >
               <DeleteOutlined />
-            </Button> */}
+            </Button>
           </div>
         );
       },
