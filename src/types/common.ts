@@ -28,3 +28,20 @@ export interface ILocation {
   updatedAt: string;
   __v: number
 }
+
+export interface IAdmin {
+  _id: string;
+  name: {
+    firstName: string;
+    lastName: string;
+    middleName: string;
+    _id: string;
+  };
+  role: string;
+  password: string;
+  phoneNumber: string;
+  address: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
