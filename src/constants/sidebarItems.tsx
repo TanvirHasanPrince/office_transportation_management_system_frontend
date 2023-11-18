@@ -27,6 +27,21 @@ export const sidebarItems = (role: string) => {
   const adminSidebarItems: MenuProps["items"] = [
     ...defaultSidebarItems,
     {
+      label: "Admin Management",
+      key: "admin",
+      icon: <TeamOutlined />,
+      children: [
+        {
+          label: <Link href={`/${role}/admins`}>Admins</Link>,
+          key: `/${role}/admins`,
+        },
+        {
+          label: <Link href={`/${role}/createAdmin`}>Create Admin</Link>,
+          key: `/${role}/createAdmin`,
+        },
+      ],
+    },
+    {
       label: "Employee Management",
       key: "employee",
       icon: <TeamOutlined />,

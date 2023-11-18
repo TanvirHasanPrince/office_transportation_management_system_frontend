@@ -1,6 +1,3 @@
-import TMSBreastCrumb from "@/components/ui/TMSBreastCrumb";
-import { getUserInfo } from "@/services/auth.service";
-import React from "react";
 
 const AdminPage = () => {
   return (
