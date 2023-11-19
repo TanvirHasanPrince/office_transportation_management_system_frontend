@@ -10,7 +10,7 @@ export type ResponseSuccessType = {
 };
 
 export type IGenericErrorResponse = {
-  success?: boolean,
+  success?: boolean;
   statusCode: number;
   message: string;
   errorMessages: IGenericErrorMessage[];
@@ -26,7 +26,7 @@ export interface ILocation {
   locationName: string;
   createdAt: string;
   updatedAt: string;
-  __v: number
+  __v: number;
 }
 
 export interface IAdmin {
@@ -60,5 +60,28 @@ export interface IEmployee {
   address: string;
   createdAt: string;
   updatedAt: string;
+  __v: number;
+}
+
+export interface IDriver {
+  _id: string;
+  name: {
+    firstName: string;
+    middleName: string;
+    lastName: string;
+    _id: string;
+  };
+  role: string;
+  password: string;
+  phoneNumber: string;
+  address: string;
+  vehicle: {
+    brand: string;
+    model: string;
+    year: number;
+    plateNumber: string;
+    color: string;
+    _id: string;
+  };
   __v: number;
 }

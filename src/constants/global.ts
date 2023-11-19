@@ -12,3 +12,11 @@ export const employeeRoleOptions = [
   },
 ];
 
+
+export const driverRoleOptions = [
+  {
+    label: "Driver",
+    value: "driver",
+  },
+];
+
