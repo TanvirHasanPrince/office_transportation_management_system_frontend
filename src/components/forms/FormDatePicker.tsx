@@ -6,7 +6,7 @@ type TMSDatePikerProps = {
   onChange?: (valOne: Dayjs | null, valTwo: string) => void;
   name: string;
   label?: string;
-  value?: Dayjs;
+  value?: Dayjs | null; 
   size?: "large" | "small";
 };
 

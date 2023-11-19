@@ -4,7 +4,7 @@ import TMSTable from "@/components/ui/TMSTable";
 import { Button, Input, message } from "antd";
 import React, { useState } from "react";
 import { useDebounced } from "@/redux/hooks";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import {
   DeleteOutlined,
   EditOutlined,
@@ -21,6 +21,8 @@ import {
   useScheduleQuery,
   useSchedulesQuery,
 } from "@/redux/api/scheduleApi";
+import FormDatePicker from "@/components/forms/FormDatePicker";
+import Form from "@/components/forms/Form";
 
 const SchedulesPage = () => {
   const query: Record<string, any> = {};
@@ -30,6 +32,8 @@ const SchedulesPage = () => {
   const [sortBy, setSortBy] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<string>("");
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
+
   query["limit"] = size;
   query["page"] = page;
   query["sortBy"] = sortBy;
@@ -44,6 +48,11 @@ const SchedulesPage = () => {
   if (!!debouncedTerm) {
     query["searchTerm"] = debouncedTerm;
   }
+  const handleDateChange = (date: Dayjs | null) => {
+    setSelectedDate(date);
+  };
+
+  query["date"] = selectedDate?.format("YYYY-MM-DD");
 
   const { data, isLoading } = useSchedulesQuery({ ...query });
   const [deleteSchedule] = useDeleteScheduleMutation();
@@ -68,14 +77,14 @@ const SchedulesPage = () => {
       title: "Date",
       dataIndex: "date",
     },
-{
-  title: "Driver Name",
-  dataIndex: "driver",
-  render: function (data: Record<string, any>) {
-    const fullName = `${data?.name?.firstName} ${data?.name?.middleName} ${data?.name?.lastName}`;
-    return <>{fullName}</>;
-  },
-},
+    {
+      title: "Driver Name",
+      dataIndex: "driver",
+      render: function (data: Record<string, any>) {
+        const fullName = `${data?.name?.firstName} ${data?.name?.middleName} ${data?.name?.lastName}`;
+        return <>{fullName}</>;
+      },
+    },
     {
       title: "Location",
       dataIndex: "location",
@@ -142,6 +151,11 @@ const SchedulesPage = () => {
     setSearchTerm("");
   };
 
+  const handleSubmit = (data: any) => {
+    // Handle the form submission logic here
+    console.log(data);
+  };
+
   return (
     <div
       style={{
@@ -149,6 +163,18 @@ const SchedulesPage = () => {
       }}
     >
       <h1 style={{ marginBottom: "10px" }}>List of all Drivers</h1>
+
+      <div style={{width:"20%"}}>
+        <Form submitHandler={handleSubmit}>
+          <FormDatePicker
+            name="date"
+            label="Select Date"
+            value={selectedDate}
+            onChange={handleDateChange}
+          />
+        </Form>
+      </div>
+
       <Input
         style={{ width: "20%", margin: "10px 0px", background: "white" }}
         type="text"
