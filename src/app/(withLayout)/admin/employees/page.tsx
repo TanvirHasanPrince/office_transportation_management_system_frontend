@@ -98,7 +98,7 @@ const EmployeesPage = () => {
               <EyeOutlined />
             </Button> */}
 
-            <Link href={`/admin/admins/edit/${data?._id}`}>
+            <Link href={`/admin/employees/edit/${data?._id}`}>
               <Button
                 style={{ margin: "5px" }}
                 onClick={() => console.log(data)}
@@ -144,12 +144,12 @@ const EmployeesPage = () => {
         padding: "20px 20px",
       }}
     >
-      <h1 style={{ marginBottom: "10px" }}>List of all Admins</h1>
+      <h1 style={{ marginBottom: "10px" }}>List of all Employees</h1>
       <Input
         style={{ width: "20%", margin: "10px 0px", background: "white" }}
         type="text"
         size="large"
-        placeholder="Search Admins..."
+        placeholder="Search Employees..."
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       {(!!sortBy || !!sortOrder || !!searchTerm) && (
