@@ -4,6 +4,7 @@ import TMSTable from "@/components/ui/TMSTable";
 import { Button, Input, message } from "antd";
 import React, { useState } from "react";
 import { useDebounced } from "@/redux/hooks";
+import { Select } from "antd";
 import dayjs, { Dayjs } from "dayjs";
 import {
   DeleteOutlined,
@@ -33,12 +34,29 @@ const SchedulesPage = () => {
   const [sortOrder, setSortOrder] = useState<string>("");
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
+  const [dropOffTime, setDropOffTime] = useState<string | null>(null);
 
   query["limit"] = size;
   query["page"] = page;
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
+  query["dropOffTime"] = dropOffTime;
   // query["searchTerm"] = searchTerm;
+
+  const dropOffTimes = [
+    { label: "Select Drop Off Time", value: null },
+    { label: "10:15 PM", value: "10:15 PM" },
+    { label: "11:15 PM", value: "11:15 PM" },
+    { label: "12:15 AM", value: "12:15 AM" },
+    { label: "01:15 AM", value: "01:15 AM" },
+    { label: "02:15 AM", value: "02:15 AM" },
+    { label: "03:15 AM", value: "03:15 AM" },
+    { label: "04:15 AM", value: "04:15 AM" },
+    { label: "05:15 AM", value: "05:15 AM" },
+    { label: "06:15 AM", value: "06:15 AM" },
+    { label: "07:30 AM", value: "07:30 AM" },
+    { label: "08:30 AM", value: "08:30 AM" },
+  ];
 
   const debouncedTerm = useDebounced({
     searchQuery: searchTerm,
@@ -149,12 +167,16 @@ const SchedulesPage = () => {
     setSortBy("");
     setSortOrder("");
     setSearchTerm("");
+    setSelectedDate(null);
+    setDropOffTime("");
   };
 
   const handleSubmit = (data: any) => {
     // Handle the form submission logic here
     console.log(data);
   };
+
+  const todayPlaceholder = dayjs().format("MMMM D, YYYY");
 
   return (
     <div
@@ -164,16 +186,30 @@ const SchedulesPage = () => {
     >
       <h1 style={{ marginBottom: "10px" }}>List of all Drivers</h1>
 
-      <div style={{width:"20%"}}>
+      <div style={{ width: "20%" }}>
         <Form submitHandler={handleSubmit}>
           <FormDatePicker
             name="date"
-            label="Select Date"
-            value={selectedDate}
+            label={`Select Date`}
+            placeholder={` ${todayPlaceholder}`}
+            value={selectedDate || undefined}
             onChange={handleDateChange}
           />
         </Form>
       </div>
+
+      <Select
+        style={{ width: "20%", margin: "10px 0px 0px 0px" }}
+        placeholder="Select Drop Off Time"
+        onChange={(value) => setDropOffTime(value)}
+      >
+        {dropOffTimes.map((time) => (
+          <Select.Option key={time.value} value={time.value}>
+            {time.label}
+          </Select.Option>
+        ))}
+      </Select>
+      <br></br>
 
       <Input
         style={{ width: "20%", margin: "10px 0px", background: "white" }}
@@ -182,7 +218,11 @@ const SchedulesPage = () => {
         placeholder="Search Drivers..."
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      {(!!sortBy || !!sortOrder || !!searchTerm) && (
+      {(!!sortBy ||
+        !!sortOrder ||
+        !!searchTerm ||
+        selectedDate ||
+        dropOffTime) && (
         <Button
           style={{ marginLeft: "5px" }}
           type="primary"

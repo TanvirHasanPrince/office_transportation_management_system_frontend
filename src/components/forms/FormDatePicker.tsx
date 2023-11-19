@@ -8,6 +8,7 @@ type TMSDatePikerProps = {
   label?: string;
   value?: Dayjs | null; 
   size?: "large" | "small";
+  placeholder?: string
 };
 
 const FormDatePicker = ({
@@ -15,6 +16,7 @@ const FormDatePicker = ({
   label,
   onChange,
   size = "large",
+  placeholder,
 }: TMSDatePikerProps) => {
   const { control, setValue } = useFormContext();
 
@@ -36,6 +38,7 @@ const FormDatePicker = ({
           <DatePicker
             value={field.value ? dayjs(field.value) : null}
             size={size}
+            placeholder={placeholder}
             onChange={handleOnChange}
             style={{ width: "100%" }}
           />
