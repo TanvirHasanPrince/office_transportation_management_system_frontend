@@ -1,10 +1,6 @@
 "use client";
 import LoadingAnimation from "@/components/LoadingAnimation";
 import TMSTable from "@/components/ui/TMSTable";
-import {
-  useDeleteLocationMutation,
-  useLocationsQuery,
-} from "@/redux/api/locationApi";
 import { Button, Input, message } from "antd";
 import React, { useState } from "react";
 import { useDebounced } from "@/redux/hooks";
@@ -101,7 +97,7 @@ const AdminsPage = () => {
               <EyeOutlined />
             </Button>
 
-            <Link href={`/admin/locations/edit/${data?._id}`}>
+            <Link href={`/admin/admins/edit/${data?._id}`}>
               <Button
                 style={{ margin: "5px" }}
                 onClick={() => console.log(data)}
@@ -152,7 +148,7 @@ const AdminsPage = () => {
         style={{ width: "20%", margin: "10px 0px", background: "white" }}
         type="text"
         size="large"
-        placeholder="Search locations..."
+        placeholder="Search Admins..."
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       {(!!sortBy || !!sortOrder || !!searchTerm) && (
