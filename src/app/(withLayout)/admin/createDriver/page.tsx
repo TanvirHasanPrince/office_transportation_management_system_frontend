@@ -73,6 +73,17 @@ const CreateDriverPage = () => {
               label="Password"
             />
           </Col>
+          <Col className="gutter-row" span={8}>
+            <FormInput type="text" name="nid" size="large" label="NID" />
+          </Col>
+          <Col className="gutter-row" span={8}>
+            <FormInput
+              type="text"
+              name="licenseNumber"
+              size="large"
+              label="Driving License"
+            />
+          </Col>
           <Col className="gutter-row" span={8} style={{ marginBottom: "15px" }}>
             <FormSelectField
               name="role"
@@ -81,6 +92,7 @@ const CreateDriverPage = () => {
               options={driverRoleOptions}
             />
           </Col>
+
           <Col className="gutter-row" span={8}>
             <FormInput
               type="text"

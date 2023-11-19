@@ -12,7 +12,6 @@ import {
   ReloadOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
-import { useAdminsQuery, useDeleteAdminMutation } from "@/redux/api/adminApi";
 import { useDeleteDriverMutation, useDriversQuery } from "@/redux/api/driverApi";
 
 const DriversPage = () => {
@@ -76,6 +75,14 @@ const DriversPage = () => {
     {
       title: "Role",
       dataIndex: "role",
+    },
+    {
+      title: "NID",
+      dataIndex: "nid",
+    },
+    {
+      title: "Driving License",
+      dataIndex: "licenseNumber",
     },
 
     {
@@ -185,12 +192,12 @@ const DriversPage = () => {
         padding: "20px 20px",
       }}
     >
-      <h1 style={{ marginBottom: "10px" }}>List of all Admins</h1>
+      <h1 style={{ marginBottom: "10px" }}>List of all Drivers</h1>
       <Input
         style={{ width: "20%", margin: "10px 0px", background: "white" }}
         type="text"
         size="large"
-        placeholder="Search Admins..."
+        placeholder="Search Drivers..."
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       {(!!sortBy || !!sortOrder || !!searchTerm) && (

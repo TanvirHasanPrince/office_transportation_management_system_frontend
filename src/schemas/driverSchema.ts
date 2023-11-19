@@ -7,9 +7,11 @@ const driverSchema = Yup.object().shape({
     lastName: Yup.string().required("Last name is required"),
   }),
   phoneNumber: Yup.string()
-    .matches(/^\d{6,}$/, "Invalid phone number, must be at least 6 digits")
+    .matches(/^\d{11}$/, "Invalid phone number, must be at least 11 digits")
     .required("Phone number is required"),
   address: Yup.string().required("Address is required"),
+  nid: Yup.string().required("NID is required"),
+  licenseNumber: Yup.string().required("Driving license is required"),
   password: Yup.string()
     .min(6, "Password must be at least 6 characters")
     .required("Password is required"),
