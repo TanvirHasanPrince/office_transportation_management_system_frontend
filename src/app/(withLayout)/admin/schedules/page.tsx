@@ -168,7 +168,7 @@ const SchedulesPage = () => {
     setSortOrder("");
     setSearchTerm("");
     setSelectedDate(null);
-    setDropOffTime("");
+    setDropOffTime(null);
   };
 
   const handleSubmit = (data: any) => {
@@ -176,7 +176,7 @@ const SchedulesPage = () => {
     console.log(data);
   };
 
-  const todayPlaceholder = dayjs().format("MMMM D, YYYY");
+  // const todayPlaceholder = dayjs().format("MMMM D, YYYY");
 
   return (
     <div
@@ -191,7 +191,7 @@ const SchedulesPage = () => {
           <FormDatePicker
             name="date"
             label={`Select Date`}
-            placeholder={` ${todayPlaceholder}`}
+            // placeholder={` ${todayPlaceholder}`}
             value={selectedDate || undefined}
             onChange={handleDateChange}
           />
@@ -199,7 +199,7 @@ const SchedulesPage = () => {
       </div>
 
       <Select
-        style={{ width: "20%", margin: "10px 0px 0px 0px" }}
+        style={{ width: "20%", margin: "10px 0px 10px 0px" }}
         placeholder="Select Drop Off Time"
         onChange={(value) => setDropOffTime(value)}
       >
@@ -208,23 +208,24 @@ const SchedulesPage = () => {
             {time.label}
           </Select.Option>
         ))}
+ 
       </Select>
       <br></br>
 
-      <Input
+      {/* <Input
         style={{ width: "20%", margin: "10px 0px", background: "white" }}
         type="text"
         size="large"
-        placeholder="Search Drivers..."
+        placeholder="Search..."
         onChange={(e) => setSearchTerm(e.target.value)}
-      />
+      /> */}
       {(!!sortBy ||
         !!sortOrder ||
         !!searchTerm ||
         selectedDate ||
         dropOffTime) && (
         <Button
-          style={{ marginLeft: "5px" }}
+          style={{ marginLeft: "5px", marginBottom: "10px" }}
           type="primary"
           onClick={resetFilters}
         >
