@@ -19,7 +19,7 @@ const driverSchema = Yup.object().shape({
   vehicle: Yup.object().shape({
     brand: Yup.string().required("Vehicle brand is required"),
     model: Yup.string().required("Vehicle model is required"),
-    year: Yup.number().required("Vehicle year is required"),
+    year: Yup.string().required("Vehicle year is required"),
     plateNumber: Yup.string().required("Vehicle plate number is required"),
     color: Yup.string().required("Vehicle color is required"),
   }),

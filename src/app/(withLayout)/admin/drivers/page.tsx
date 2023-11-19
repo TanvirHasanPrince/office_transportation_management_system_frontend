@@ -146,7 +146,7 @@ const DriversPage = () => {
               <EyeOutlined />
             </Button> */}
 
-            <Link href={`/admin/admins/edit/${data?._id}`}>
+            <Link href={`/admin/drivers/edit/${data?._id}`}>
               <Button
                 style={{ margin: "5px" }}
                 onClick={() => console.log(data)}
