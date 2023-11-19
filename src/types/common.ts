@@ -22,7 +22,7 @@ export type IGenericErrorMessage = {
 };
 
 export interface ILocation {
-  id: string;
+  _id: string;
   locationName: string;
   createdAt: string;
   updatedAt: string;
@@ -84,4 +84,11 @@ export interface IDriver {
     _id: string;
   };
   __v: number;
+}
+
+export interface ISchedule {
+  date: string;
+  driver: string;
+  location: string; //
+  dropOffTime: string;
 }

@@ -4,6 +4,7 @@ export enum tagTypes {
   driver = "driver",
   location = "location",
   admin = "admin",
+  schedule='schedule'
 }
 
 export const tagTypesList = [
@@ -12,4 +13,5 @@ export const tagTypesList = [
   tagTypes.admin,
   tagTypes.employee,
   tagTypes.driver,
+  tagTypes.schedule,
 ];
