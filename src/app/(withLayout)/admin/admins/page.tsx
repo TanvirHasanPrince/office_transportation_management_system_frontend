@@ -89,13 +89,13 @@ const AdminsPage = () => {
       render: function (data: any) {
         return (
           <div>
-            <Button
+            {/* <Button
               onClick={() => console.log(data)}
               type="primary"
               style={{ background: " #6D2D6C ", color: "white" }}
             >
               <EyeOutlined />
-            </Button>
+            </Button> */}
 
             <Link href={`/admin/admins/edit/${data?._id}`}>
               <Button

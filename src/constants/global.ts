@@ -4,3 +4,11 @@ export const adminRoleOptions = [
     value: "admin",
   },
 ];
+
+export const employeeRoleOptions = [
+  {
+    label: "Employee",
+    value: "employee",
+  },
+];
+
