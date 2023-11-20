@@ -59,5 +59,5 @@ export const {
   useAdminsQuery,
   useAdminQuery,
   useUpdateAdminMutation,
-  useDeleteAdminMutation
+  useDeleteAdminMutation,
 } = adminApi;

@@ -9,7 +9,7 @@ import {
 import Link from "next/link";
 import { USER_ROLE } from "./role";
 
-export const sidebarItems = (role: string) => {
+export const sidebarItems = (role: string, _id: string) => {
   const defaultSidebarItems: MenuProps["items"] = [
     {
       label: "Profile",
@@ -17,7 +17,7 @@ export const sidebarItems = (role: string) => {
       icon: <ProfileOutlined />,
       children: [
         {
-          label: <Link href={`/${role}`}>My Profile</Link>,
+          label: <Link href={`/${role}/myProfile/${_id}`}>My Profile</Link>,
           key: `/${role}/profile`,
         },
       ],
@@ -105,39 +105,35 @@ export const sidebarItems = (role: string) => {
     },
   ];
 
+  const employeeSidebarItems: MenuProps["items"] = [
+    ...defaultSidebarItems,
+    {
+      label: "Drop off schedule",
+      key: "schedule",
+      icon: <ScheduleOutlined />,
+      children: [
+        {
+          label: <Link href={`/${role}/schedules`}>Drop off schedule</Link>,
+          key: `/${role}/schedule`,
+        },
+      ],
+    },
+  ];
 
-    const employeeSidebarItems: MenuProps["items"] = [
-      ...defaultSidebarItems,
-      {
-        label: "Drop off schedule",
-        key: "schedule",
-        icon: <ScheduleOutlined />,
-        children: [
-          {
-            label: <Link href={`/${role}`}>Drop off schedule</Link>,
-            key: `/${role}/schedule`,
-          },
-        ],
-      },
-     
-      
-    ];
-
-        const driverSidebarItems: MenuProps["items"] = [
-          ...defaultSidebarItems,
-          {
-            label: "Drop off schedule",
-            key: "schedule",
-            icon: <ScheduleOutlined />,
-            children: [
-              {
-                label: <Link href={`/${role}`}>Drop off schedule</Link>,
-                key: `/${role}/schedule`,
-              },
-            ],
-          },
-        ];
-
+  const driverSidebarItems: MenuProps["items"] = [
+    ...defaultSidebarItems,
+    {
+      label: "Drop off schedule",
+      key: "schedule",
+      icon: <ScheduleOutlined />,
+      children: [
+        {
+          label: <Link href={`/${role}/schedules`}>Drop off schedule</Link>,
+          key: `/${role}/schedules`,
+        },
+      ],
+    },
+  ];
 
   if (role === USER_ROLE.ADMIN) return adminSidebarItems;
   else if (role === USER_ROLE.EMPLOYEE) return employeeSidebarItems;

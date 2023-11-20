@@ -1,11 +1,11 @@
+import React from 'react';
 
-
-const ProfilePage = () => {
+const WelcomePage = () => {
  return (
   <div>
-   <h1>Welcome back to your profile</h1>
+   <h1>Welcome to Transportation Management System</h1>
   </div>
  );
 };
 
-export default ProfilePage;
+export default WelcomePage;<h1>Welcome to Transportation Management System</h1>

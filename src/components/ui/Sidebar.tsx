@@ -8,7 +8,7 @@ const { Sider } = Layout;
 
 const Sidebar = () => {
   //get role
-  const { role } = getUserInfo() as any;
+  const { role, _id } = getUserInfo() as any;
   // console.log(role);
   const [collapsed, setCollapsed] = useState(false);
 
@@ -45,7 +45,7 @@ const Sidebar = () => {
           theme="dark"
           defaultSelectedKeys={["1"]}
           mode="inline"
-          items={sidebarItems(role)}
+          items={sidebarItems(role, _id)}
         />
       </Sider>
     </div>
