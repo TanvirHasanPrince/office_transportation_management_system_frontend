@@ -104,6 +104,22 @@ const SchedulesPage = () => {
       },
     },
     {
+      title: "Driver's Phone Number",
+      dataIndex: "driver",
+      render: function (data: Record<string, any>) {
+        const phoneNumber = `${data?.phoneNumber}`;
+        return <>{phoneNumber}</>;
+      },
+    },
+    {
+      title: "Vehicle Plate Number",
+      dataIndex: "driver",
+      render: function (data: Record<string, any>) {
+        const plateNumber = `${data?.vehicle?.plateNumber}`;
+        return <>{plateNumber}</>;
+      },
+    },
+    {
       title: "Location",
       dataIndex: "location",
       render: function (data: Record<string, string>) {
@@ -128,7 +144,7 @@ const SchedulesPage = () => {
             >
               <EyeOutlined />
             </Button> */}
-
+            {/* 
             <Link href={`/admin/drivers/edit/${data?._id}`}>
               <Button
                 style={{ margin: "5px" }}
@@ -137,7 +153,7 @@ const SchedulesPage = () => {
               >
                 <EditOutlined />
               </Button>
-            </Link>
+            </Link> */}
             <Button
               onClick={() => deleteHandler(data?._id)}
               type="primary"
@@ -208,7 +224,6 @@ const SchedulesPage = () => {
             {time.label}
           </Select.Option>
         ))}
- 
       </Select>
       <br></br>
 
