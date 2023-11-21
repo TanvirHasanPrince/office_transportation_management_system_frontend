@@ -1,7 +1,7 @@
 "use client";
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormInput";
-import TMSBreastCrumb from "@/components/ui/TMSBreastCrumb";
+// import TMSBreastCrumb from "@/components/ui/TMSBreastCrumb";
 import { useAddLocationMutation } from "@/redux/api/locationApi";
 import { getUserInfo } from "@/services/auth.service";
 import { Button, Col, Row, message } from "antd";
@@ -28,12 +28,12 @@ const CreateLocationsPage = () => {
         padding: "20px 20px",
       }}
     >
-      <TMSBreastCrumb
+      {/* <TMSBreastCrumb
         items={[
           { label: `${base}`, link: `/${base}` },
           { label: "Create Location", link: `/${base}/createLocations` },
         ]}
-      />
+      /> */}
       <h1>Create Location</h1>
       <Form submitHandler={onSubmit}>
         <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
