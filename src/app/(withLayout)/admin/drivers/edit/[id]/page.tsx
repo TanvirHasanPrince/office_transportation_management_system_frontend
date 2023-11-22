@@ -23,6 +23,7 @@ const EditDriverPage = ({ params }: IDProps) => {
 
   const onSubmit = async (values: any) => {
     try {
+      console.log(values);
       await updateDriver({ id, body: values });
       message.success("Driver updated Successfully");
     } catch (err: any) {

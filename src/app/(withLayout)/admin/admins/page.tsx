@@ -106,13 +106,13 @@ const AdminsPage = () => {
                 <EditOutlined />
               </Button>
             </Link>
-            <Button
+            {/* <Button
               onClick={() => deleteHandler(data?._id)}
               type="primary"
               danger
             >
               <DeleteOutlined />
-            </Button>
+            </Button> */}
           </div>
         );
       },
