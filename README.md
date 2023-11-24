@@ -57,7 +57,7 @@ The business is facing challenges with transportation management and relies on a
 
 🚀 Feel free to check out the [Website]([#](https://office-transportation-management-system.vercel.app/login)) and provide feedback!
 
-### Live Link
+### Server Link
 
 [Server](https://office-transportation-management-system-backend.vercel.app/)
 
