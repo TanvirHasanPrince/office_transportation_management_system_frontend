@@ -2,6 +2,20 @@
 
 Thrilled to share my latest project: A website designed to streamline transportation services for employees! 🚗
 
+
+## Overview
+
+This repository contains the frontend code for an Office Transportation Management System. The system aims to address the transportation management issues faced by businesses relying on third-party vendors for transportation services. It provides a comprehensive solution for managing drivers, employees, and scheduling drop-off locations.
+
+## Requirement Analysis
+
+### Business Problem
+
+The business is facing challenges with transportation management and relies on a third-party vendor for transportation services. The key requirements include:
+
+- Storing drivers' information
+- Allocating drivers to specific areas for dropping off employees
+
 ## Roles Defined
 👨‍💼 **Admin**: Empowered to create employees, drivers, schedules, and locations.
 
