@@ -7,6 +7,7 @@ import { SubmitHandler } from "react-hook-form";
 import { useUserLoginMutation } from "@/redux/api/authApi";
 import { isLoggedIn, storeUserInfo } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 type FormValues = {
   id: string;
@@ -14,11 +15,14 @@ type FormValues = {
 };
 
 const LoginPage = () => {
-  const [userLogin] = useUserLoginMutation();
+  const [userLogin, isLoading] = useUserLoginMutation();
+  const [isButtonDisabled, setButtonDisabled] = useState(false);
+
   // console.log(isLoggedIn());
   const router = useRouter();
   const onSubmit: SubmitHandler<FormValues> = async (data: any) => {
     try {
+      setButtonDisabled(true);
       const res = await userLogin({ ...data }).unwrap();
       //  console.log(res);
       if (res?.token) {
@@ -43,9 +47,15 @@ const LoginPage = () => {
       </Col>
       <Col sm={12} md={8} lg={8}>
         <h1>Login please!</h1>
+
+        <p>(Use 123456 for admin login)</p>
         <div>
           <Form submitHandler={onSubmit}>
-            <div>
+            <div
+              style={{
+                marginTop: "15px",
+              }}
+            >
               <FormInput
                 name="phoneNumber"
                 type="text"
@@ -67,9 +77,23 @@ const LoginPage = () => {
                 placeholder="Type your password"
               />
             </div>
-            <Button type="primary" htmlType="submit">
-              Login
-            </Button>
+            {isButtonDisabled ? (
+              <Button
+                type="primary"
+                htmlType="submit"
+                disabled={isButtonDisabled}
+              >
+                Checking credentials
+              </Button>
+            ) : (
+              <Button
+                type="primary"
+                htmlType="submit"
+                disabled={isButtonDisabled}
+              >
+                Login
+              </Button>
+            )}
           </Form>
         </div>
       </Col>

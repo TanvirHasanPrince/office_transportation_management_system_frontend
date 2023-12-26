@@ -63,6 +63,7 @@ const DriversPage = () => {
         const fullName = `${data?.firstName} ${data?.middleName} ${data?.lastName}`;
         return <>{fullName}</>;
       },
+ 
     },
     {
       title: "Phone Number",

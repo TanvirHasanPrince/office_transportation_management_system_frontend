@@ -38,6 +38,7 @@ const TMSTable = ({
       dataSource={dataSource}
       pagination={paginationConfig}
       onChange={onTableChange}
+      scroll={{ x: 500 }}
     />
   );
 };
