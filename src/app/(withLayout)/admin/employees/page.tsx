@@ -1,4 +1,5 @@
 "use client";
+import { Row, Col } from "antd";
 import LoadingAnimation from "@/components/LoadingAnimation";
 import TMSTable from "@/components/ui/TMSTable";
 import { Button, Input, message } from "antd";
@@ -145,13 +146,17 @@ const EmployeesPage = () => {
       }}
     >
       <h1 style={{ marginBottom: "10px" }}>List of all Employees</h1>
+              <Row>
+      <Col xs={24} sm={24} md={12} lg={5}>
       <Input
-        style={{ width: "20%", margin: "10px 0px", background: "white" }}
+        style={{ width: "100%", margin: "10px 0px", background: "white" }}
         type="text"
         size="large"
         placeholder="Search Employees..."
         onChange={(e) => setSearchTerm(e.target.value)}
       />
+      </Col>
+     </Row>
       {(!!sortBy || !!sortOrder || !!searchTerm) && (
         <Button
           style={{ marginLeft: "5px" }}

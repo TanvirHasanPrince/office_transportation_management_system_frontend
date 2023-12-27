@@ -1,4 +1,5 @@
 "use client";
+import { Row, Col } from "antd";
 import LoadingAnimation from "@/components/LoadingAnimation";
 import TMSTable from "@/components/ui/TMSTable";
 import { Button, Input, message } from "antd";
@@ -200,9 +201,11 @@ const SchedulesPage = () => {
         padding: "20px 20px",
       }}
     >
+              <Row>
+      <Col xs={24} sm={24} md={12} lg={5}>
       <h1 style={{ marginBottom: "10px" }}>List of all Drivers</h1>
 
-      <div style={{ width: "20%" }}>
+      <div style={{ width: "100%" }}>
         <Form submitHandler={handleSubmit}>
           <FormDatePicker
             name="date"
@@ -215,7 +218,7 @@ const SchedulesPage = () => {
       </div>
 
       <Select
-        style={{ width: "20%", margin: "10px 0px 10px 0px" }}
+        style={{ width: "100%", margin: "10px 0px 10px 0px" }}
         placeholder="Select Drop Off Time"
         onChange={(value) => setDropOffTime(value)}
       >
@@ -225,6 +228,8 @@ const SchedulesPage = () => {
           </Select.Option>
         ))}
       </Select>
+      </Col>
+      </Row>
       <br></br>
 
       {/* <Input
