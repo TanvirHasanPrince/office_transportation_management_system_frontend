@@ -16,7 +16,10 @@ type FormValues = {
 
 const LoginPage = () => {
   const [userLogin, isLoading] = useUserLoginMutation();
+
   const [isButtonDisabled, setButtonDisabled] = useState(false);
+  const [loginError, setLoginError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   // console.log(isLoggedIn());
   const router = useRouter();
@@ -24,13 +27,18 @@ const LoginPage = () => {
     try {
       setButtonDisabled(true);
       const res = await userLogin({ ...data }).unwrap();
-      //  console.log(res);
+      console.log(res);
+
       if (res?.token) {
         router.push("/profile");
       }
       storeUserInfo({ token: res?.token });
     } catch (err: any) {
-      console.error(err.message);
+      if (err) {
+        setLoginError(true);
+        setButtonDisabled(false);
+      }
+      setErrorMessage(err.data.message);
     }
   };
 
@@ -50,6 +58,12 @@ const LoginPage = () => {
 
         <p>(Use 123456 for admin login)</p>
         <div>
+          {loginError && (
+            <p style={{ margin: "0 auto", textAlign: "center", color: 'red' }}>
+              {errorMessage}
+            </p>
+          )}
+
           <Form submitHandler={onSubmit}>
             <div
               style={{

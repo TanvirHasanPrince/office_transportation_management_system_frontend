@@ -5,10 +5,9 @@ import axios from "axios";
 
 const instance = axios.create();
 
-instance.defaults.headers.post["Content-Type"] = 'application/json'
+instance.defaults.headers.post["Content-Type"] = "application/json";
 instance.defaults.headers["Accept"] = "application/json";
 instance.defaults.timeout = 60000;
-
 
 // Add a request interceptor
 instance.interceptors.request.use(
@@ -39,15 +38,15 @@ instance.interceptors.response.use(
   },
   function (error) {
     const responseObject: IGenericErrorResponse = {
-      success: error?.response?.data?.success ,
+      success: error?.response?.data?.success,
       statusCode: error?.response?.data?.statusCode || 500,
-      message: error?.response?.data?.messages || 'Something went wrong',
+      message: error?.response?.data?.messages || "Something went wrong",
       errorMessages: error?.response?.data?.messages,
     };
+    
 
     return Promise.reject(error);
   }
 );
 
-
-export {instance}
+export { instance };
